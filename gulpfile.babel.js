@@ -1,10 +1,9 @@
 import gulp from "gulp";
 import del from "del";
-import sass from "gulp-sass";
 import minify from "gulp-csso";
 import autoprefixer from "gulp-autoprefixer";
 
-var sass = require('gulp-sass')(require('sass'));
+const sass = require('gulp-sass')(require('sass'));
 
 const routes = {
   css: {
@@ -16,7 +15,7 @@ const routes = {
 
 const styles = () =>
   gulp
-    .src(routes.css.src)
+    .src(routes.css.src,{allowEmpty: true})
     .pipe(sass().on("error", sass.logError))
     .pipe(
       autoprefixer({
